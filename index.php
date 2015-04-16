@@ -7,9 +7,10 @@ session_start ();
  * Define document paths
  */
 define ( 'SERVER_ROOT', dirname ( __FILE__ ) );
-define ( 'SITE_URL', $_SERVER ['HTTP_HOST'] . '/' );
 require SERVER_ROOT . '/conf.php';
 require SERVER_ROOT . '/classes/json.php';
+$apPath = Config::read('appication_path');
+define ( 'SITE_URL', $_SERVER ['HTTP_HOST'] . '/'.($apPath == "" ? "" : trim($apPath,'/').'/') );
 $autoloader = new Autoloader ( 'services' );
 $request = '';
 parse_str ( $_SERVER ['QUERY_STRING'], $request );
