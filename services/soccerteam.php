@@ -15,8 +15,20 @@ class Soccerteam extends Json{
 		require SERVER_ROOT.'/classes/team.php';
 		$team = TeamFacrory::get(null,null);
 		$teams = $team->getAll();
+		foreach ($teams as &$teamRw){
+			$teamRw['logo_url'] = 'http://'.SITE_URL.'images/'.$teamRw['logo_url'];
+		}
 		$this->ok($teams);
-		
+	}
+	
+	public function getteamplayers($params){
+		require SERVER_ROOT.'/classes/player.php';
+		$player = PlayerFacrory::get($params[0],null);
+		$players = $player->getAll();
+		foreach ($players as &$playerRw){
+			$playerRw['image_url'] = 'http://'.SITE_URL.'images/'.$playerRw['image_url'];
+		}
+		$this->ok($players);
 	}
 	
 }

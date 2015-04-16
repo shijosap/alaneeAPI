@@ -18,9 +18,7 @@ if (empty ( $request )) {
 	$request = 'Home';
 }
 $request_ar = explode ( '/', $request );
-// echo '<pre>';
-// print_r($request_ar); exit;
-$service = htmlentities ( ucfirst ( $request_ar [0] ) );
+$service = htmlentities ( ucfirst (array_shift($request_ar)) );
 if (class_exists ( $service )) {
 	$page = new $service ();
 } else {
@@ -28,8 +26,7 @@ if (class_exists ( $service )) {
 	$json->error ( 9999, "Sorry no service exists" );
 	exit;
 }
-unset ( $request_ar [0] );
-$service_function = htmlentities ( ucfirst ( $request_ar [1] ) );
+$service_function = htmlentities ( ucfirst (array_shift($request_ar)) );
 if (method_exists ( $page, $service_function )) {
 	$page->$service_function ( $request_ar );
 } else {
