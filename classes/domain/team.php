@@ -6,11 +6,44 @@ class Team
 
 	public function __construct($id=null, $name=null)
 	{
-		$this->id = $id;
-		$this->name = $name;
+		$this->setId($id);
+		$this->setName($name);
+	}
+	
+	public function setId($pId){
+		$this->id = $pId;
+	}
+	
+	public function getId(){
+		return $this->id;
+	}	
+	
+	public function setName($pName){
+		$this->name = $pName;
+	}
+	
+	public function getName(){
+		return $this->name;
 	}
 	
 	public function getAll(){
+		$teamDB = new TeamDB();
+		return $teamDB->fetchAllTeams();
+	}
+	
+	public function get(){
+		
+		
+	}
+
+	public function save()
+	{
+		
+	}
+}
+
+class TeamDB{
+	public function fetchAllTeams(){
 		$response = array();
 		$db = new Database();
 		$sql = "SELECT * FROM `team`";
@@ -23,16 +56,8 @@ class Team
 		}
 		return $response;
 	}
-	
-	public function get(){
-		
-		
-	}
 
-	public function save()
-	{
-		
-	}
+
 }
 
 class TeamFacrory

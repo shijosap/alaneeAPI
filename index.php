@@ -8,7 +8,7 @@ session_start ();
  */
 define ( 'SERVER_ROOT', dirname ( __FILE__ ) );
 require SERVER_ROOT . '/conf.php';
-require SERVER_ROOT . '/classes/json.php';
+require SERVER_ROOT . '/classes/util/json.php';
 $apPath = Config::read('appication_path');
 define ( 'SITE_URL', $_SERVER ['HTTP_HOST'] . '/'.($apPath == "" ? "" : trim($apPath,'/').'/') );
 $autoloader = new Autoloader ( 'services' );

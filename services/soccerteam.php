@@ -12,7 +12,7 @@ class Soccerteam extends Json{
 	
 	public function getteams($params){
 		//var_dump($params);
-		require SERVER_ROOT.'/classes/team.php';
+		require SERVER_ROOT.'/classes/domain/team.php';
 		$team = TeamFacrory::get(null,null);
 		$teams = $team->getAll();
 		foreach ($teams as &$teamRw){
@@ -22,7 +22,7 @@ class Soccerteam extends Json{
 	}
 	
 	public function getteamplayers($params){
-		require SERVER_ROOT.'/classes/player.php';
+		require SERVER_ROOT.'/classes/domain/player.php';
 		$player = PlayerFacrory::get($params[0],null);
 		$players = $player->getAll();
 		foreach ($players as &$playerRw){
